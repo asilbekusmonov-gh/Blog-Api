@@ -1,0 +1,11 @@
+[
+{
+    "model": "apps.photo",
+    "pk": 1,
+    "fields": {
+        "Album": 1,
+        "title": "aaa",
+        "image": " \"https://via.placeholder.com/600/771796\""
+    }
+}
+]

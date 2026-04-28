@@ -1,0 +1,12 @@
+[
+{
+    "model": "apps.comment",
+    "pk": 1,
+    "fields": {
+        "name": "aaa",
+        "email": "asax@gmail.ru",
+        "body": "cdccw",
+        "post": 1
+    }
+}
+]

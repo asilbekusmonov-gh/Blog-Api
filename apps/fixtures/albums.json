@@ -1,0 +1,10 @@
+[
+{
+    "model": "apps.album",
+    "pk": 1,
+    "fields": {
+        "title": "aaa",
+        "userID": 1
+    }
+}
+]

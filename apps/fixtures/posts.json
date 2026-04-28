@@ -1,0 +1,11 @@
+[
+{
+    "model": "apps.post",
+    "pk": 1,
+    "fields": {
+        "title": "wccwe",
+        "body": "wcw",
+        "userID": 1
+    }
+}
+]

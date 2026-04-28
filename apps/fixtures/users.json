@@ -1,0 +1,19 @@
+[
+{
+    "model": "apps.userjson",
+    "pk": 1,
+    "fields": {
+        "name": "asilbnek",
+        "username": "aaa",
+        "email": "asiasii@gmail",
+        "address": {
+            "street": "sergeli"
+        },
+        "phone": "+998998373",
+        "website": "wjhwec",
+        "company": {
+            "ec": "pdp"
+        }
+    }
+}
+]

@@ -1,0 +1,16 @@
+[project]
+name = "drf-p37"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.0.4",
+    "django-filter>=25.2",
+    "djangorestframework>=3.17.1",
+    "djangorestframework-simplejwt>=5.5.1",
+    "djangorestframework-stubs>=3.16.9",
+    "drf-spectacular>=0.29.0",
+    "markdown>=3.10.2",
+    "pillow>=12.2.0",
+    "psycopg2-binary>=2.9.11",
+    "python-dotenv>=1.2.2",
+]
