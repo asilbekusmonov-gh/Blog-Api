@@ -556,3 +556,95 @@ caching (Redis)
 signals:
 post create → notify
 soft delete
+
+
+
+
+
+------------------------------
+
+
+
+🟢 EASY — “Product Catalog API (Post o‘rniga Product)”
+📌 Vazifa
+
+Blog emas — e-commerce product API yozish.
+
+📦 Model
+Category
+name
+Product
+title
+description
+price
+category FK
+is_active
+created_at
+Favorite (Like o‘rnida)
+user
+product
+unique(user, product)
+⚙️ Serializer talablar
+
+ProductSerializer:
+
+favorites_count (annotated)
+is_favorited (annotated)
+category_name (read_only field)
+📌 Shartlar
+ModelSerializer ishlatilsin
+SerializerMethodField ishlatilsin
+get_favorites_count annotation orqali kelishi kerak
+get_is_favorited userga bog‘liq bo‘lsin
+🎯 Maqsad
+
+👉 Post/Like patternni Product/Favorite ga ko‘chira olish
+
+
+
+
+--------------------
+
+
+
+🟡 MEDIUM — “Course platform (Tag o‘rniga Skill)”
+📌 Vazifa
+
+Blog o‘rniga online course system
+
+📦 Model
+Skill
+name
+Course
+title
+description
+instructor (User FK)
+skills (M2M)
+students_count (annotated field emas, real count)
+is_published
+Enrollment (Like o‘rniga)
+user
+course
+unique constraint
+⚙️ API
+Course endpoints:
+CRUD
+Actions:
+POST /courses/<id>/enroll/
+POST /courses/<id>/unenroll/
+📌 Serializer talablar
+
+CourseSerializer:
+
+skills (list of strings input)
+students_count (annotate yoki reverse count)
+is_enrolled (userga bog‘liq boolean)
+📌 Business logic
+skill get_or_create
+M2M set qilish
+enroll duplicate bo‘lmasin
+🎯 Maqsad
+
+👉 Tag system → Skill system transform qilish
+
+
