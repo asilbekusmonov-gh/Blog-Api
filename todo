@@ -648,3 +648,86 @@ enroll duplicate bo‘lmasin
 👉 Tag system → Skill system transform qilish
 
 
+
+
+------------------------------
+
+
+
+🔴 HARD — “Multi-type Interaction System (LIKE universal bo‘ladi)”
+
+Bu sizning original kodingizdan keyingi level
+
+📌 Vazifa
+
+Like system faqat Post uchun emas, endi:
+
+👉 Post
+👉 Product
+👉 Course
+
+hammasiga ishlaydi.
+
+📦 Model redesign
+Like (generic)
+user
+content_type
+object_id
+
+👉 GenericForeignKey ishlatiladi
+
+⚙️ Serializer challenge
+
+Har bir model serializer:
+
+is_liked universal bo‘lishi kerak
+likes_count universal bo‘lishi kerak
+📌 View logic
+annotation ishlashi kerak har bir modelda
+Exists generic bo‘lishi kerak
+📌 Advanced requirement
+Dynamic serializer fields (sizdagi kabi)
+?fields=id,title,likes_count,is_liked
+
+👉 hamma modelga ishlasin (Post/Product/Course)
+
+📌 Bonus requirement
+single Like table hamma narsani handle qiladi
+duplicate like bo‘lmasin
+performance N+1 bo‘lmasin
+
+
+
+
+----------------------
+
+class DynamicFieldsSerializer(serializers.ModelSerializer):
+    def __init__(self, *args, **kwargs):
+        fields = kwargs.pop('fields', None)
+        super().__init__(*args, **kwargs)
+
+        if fields:
+            allowed = set(fields)
+            existing = set(self.fields)
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
+
+
+
+
+-------------------------------
+
+
+🟢 Easy: "Kutubxona Katalogi" (Upgraded)
+Endi bu bosqichda student QuerySet API va Custom Fields bilan jiddiyroq to'qnashadi.
+
+Vazifa shartlari:
+
+ORM Manager: BookManager ichida annotate_with_availability() metodini yozing. U har bir kitobga hozirda kutubxonada nechta nusxa qolganini (total_copies - borrowed_copies) hisoblab, virtual field sifatida qo'shib bersin.
+
+Serializer: BookSerializer ichida kitobning "eskirganlik" darajasini aniqlaydigan mantiq bo'lsin. Agar kitob 10 yildan oldin nashr etilgan bo'lsa, is_classic: True qaytarsin.
+
+Search & Order: Bir vaqtning o'zida ham qidirish, ham bir nechta maydon bo'yicha tartiblash (OrderingFilter) imkoniyatini yarating (masalan, avval reyting, keyin nashr yili bo'yicha).
+
+FileResponse (Image): Kitobning muqova rasmini (image) turli o'lchamlarda (thumbnail) qaytaruvchi alohida View yozing.
